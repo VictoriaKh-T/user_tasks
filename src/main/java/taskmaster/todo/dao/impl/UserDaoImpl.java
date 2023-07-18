@@ -21,8 +21,8 @@ public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
     public Optional<User> findByLogin(String login) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery(
-                            "from User u left join fetch u.tasks "
-                                    + "where u.login = :login", User.class)
+                            "FROM User u LEFT JOIN FETCH u.tasks "
+                                    + "WHERE u.login = :login", User.class)
                     .setParameter("login", login)
                     .uniqueResultOptional();
         } catch (Exception e) {
