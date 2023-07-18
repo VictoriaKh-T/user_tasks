@@ -40,7 +40,7 @@ public abstract class AbstractDao<T, I extends Serializable> {
 
     public List<T> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from " + clazz.getSimpleName(), clazz).getResultList();
+            return session.createQuery("FROM " + clazz.getSimpleName(), clazz).getResultList();
         } catch (Exception e) {
             throw new DataException("Can't get all entities: "
                     + clazz.getSimpleName(), e);
